@@ -7,13 +7,13 @@
 
 def game_scene():
     # this function is the main game scene
-    
-    print("\n\n\n") # 3 blank lines
+
+    print("\n\n\n")  # 3 blank lines
     print("Hello, World!")
-    
+
     while True:
         # repeat forever, or you turn it off!
-        pass # just a place holder
+        pass  # just a place holder
 
 
 if __name__ == "__main__":
