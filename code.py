@@ -24,13 +24,34 @@ def game_scene():
     select_button = constants.button_state["button_up"]
 
     # get sound ready
+<<<<<<< HEAD
+    pew_sound = open("pew.wav", "rb")
+=======
     pew_sound = open("pew.wav", 'rb')
+>>>>>>> 07fc482950a295440d8f04ff09054f96d57c5afc
     sound = ugame.audio
     sound.stop()
     sound.mute(False)
 
     # set the background to image 0 in the image bank
     #   and the size (10x8 tiles of size 16x16)
+<<<<<<< HEAD
+    background = stage.Grid(
+        image_bank_background, constants.SCREEN_GRID_X, constants.SCREEN_GRID_Y
+    )
+
+    # a sprite that will be updated every frame
+    ship = stage.Sprite(
+        image_bank_sprites, 5, 75, constants.SCREEN_Y - (2 * constants.SPRITE_SIZE)
+    )
+
+    alien = stage.Sprite(
+        image_bank_sprites,
+        9,
+        int(constants.SCREEN_X / 2 - constants.SPRITE_SIZE / 2),
+        16,
+    )
+=======
     background = stage.Grid(image_bank_background, constants.SCREEN_GRID_X, constants.SCREEN_GRID_Y)
 
     # a sprite that will be updated every frame
@@ -39,6 +60,7 @@ def game_scene():
     alien = stage.Sprite(image_bank_sprites, 9,
                       int(constants.SCREEN_X / 2 - constants.SPRITE_SIZE / 2),
                       16)
+>>>>>>> 07fc482950a295440d8f04ff09054f96d57c5afc
 
     # create a stage for the background to show up on
     # and set the frame rate to 60fps
@@ -103,3 +125,4 @@ def game_scene():
 
 if __name__ == "__main__":
     game_scene()
+
