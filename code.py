@@ -85,12 +85,12 @@ def menu_scene():
 
     # add text objects
     text = []
-    text1 = stage.Text(width=29, height=12, font=None, palette=constants.RED_PALETTE, buffer=None)
+    text1 = stage.Text(width=29, height=12, font=None, palette=constants.MT_GAME_STUDIO_PALETTE, buffer=None)
     text1.move(20, 10)
     text1.text("MT Game Studios")
     text.append(text1)
 
-    text2 = stage.Text(width=29, height=12, font=None, palette=constants.RED_PALETTE, buffer=None)
+    text2 = stage.Text(width=29, height=12, font=None, palette=constants.MT_GAME_STUDIO_PALETTE, buffer=None)
     text2.move(40, 110)
     text2.text("PRESS START")
     text.append(text2)
@@ -182,10 +182,6 @@ def game_scene():
     # place 1 alien on the screen
     show_alien()
 
-    alien = stage.Sprite(image_bank_sprites, 9,
-        int(constants.SCREEN_X / 2 - constants.SPRITE_SIZE / 2),
-        16,)
-
     # create a list of lasers for when we shoot
     lasers = []
     for laser_number in range(constants.TOTAL_NUMBER_OF_LASERS):
@@ -221,28 +217,28 @@ def game_scene():
                 a_button = constants.button_state["button_up"]
 
         # B button
-        if keys & ugame.K_X != 0:
+        if keys & ugame.K_X:
             pass
-        if keys & ugame.K_START != 0:
+        if keys & ugame.K_START:
             pass
-        if keys & ugame.K_SELECT != 0:
+        if keys & ugame.K_SELECT:
             pass
 
-        if keys & ugame.K_RIGHT != 0:
+        if keys & ugame.K_RIGHT:
             if ship.x < (constants.SCREEN_X - constants.SPRITE_SIZE):
                 ship.move((ship.x + constants.SPRITE_MOVEMENT_SPEED), ship.y)
             else:
                 ship.move((constants.SCREEN_X - constants.SPRITE_SIZE), ship.y)
 
-        if keys & ugame.K_LEFT != 0:
+        if keys & ugame.K_LEFT:
             if ship.x > 0:
                 ship.move((ship.x - constants.SPRITE_MOVEMENT_SPEED), ship.y)
             else:
                 ship.move(0, ship.y)
 
-        if keys & ugame.K_UP != 0:
+        if keys & ugame.K_UP:
             pass
-        if keys & ugame.K_DOWN != 0:
+        if keys & ugame.K_DOWN:
             pass
 
         # update game logic
@@ -324,10 +320,6 @@ def game_scene():
 def game_over_scene(final_score):
     # this fuction is the game over scene
 
-    # turn off sound from last scene
-    sound = ugame.audio
-    sound.stop()
-
     # image banks for CircuitPython
     image_bank_2 = stage.Bank.from_bmp16("mt_game_studio.bmp")
 
@@ -337,17 +329,17 @@ def game_over_scene(final_score):
 
     # add text objects
     text = []
-    text1 = stage.Text(width=29, height=14, font=None, palette=constants.BLUE_PALETTE, buffer=None)
+    text1 = stage.Text(width=29, height=14, font=None, palette=constants.SCORE_PALETTE, buffer=None)
     text1.move(22, 20)
     text1.text("Final Score: {:0>2d}".format(final_score))
     text.append(text1)
 
-    text2 = stage.Text(width=29, height=14, font=None, palette=constants.BLUE_PALETTE, buffer=None)
+    text2 = stage.Text(width=29, height=14, font=None, palette=constants.SCORE_PALETTE, buffer=None)
     text2.move(43, 60)
     text2.text("GAME OVER")
     text.append(text2)
 
-    text3 = stage.Text(width=29, height=14, font=None, palette=constants.BLUE_PALETTE, buffer=None)
+    text3 = stage.Text(width=29, height=14, font=None, palette=constants.SCORE_PALETTE, buffer=None)
     text3.move(32, 110)
     text3.text("PRESS SELECT")
     text.append(text3)
@@ -367,7 +359,7 @@ def game_over_scene(final_score):
         keys = ugame.buttons.get_pressed()
 
         # start button selected
-        if keys & ugame.K_SELECT != 0:
+        if keys & ugame.K_SELECT:
             supervisor.reload()
 
     # update game logic
